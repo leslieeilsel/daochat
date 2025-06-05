@@ -33,3 +33,9 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Chat Features
+
+Messages support **Markdown** and **Mermaid** diagram rendering. Each message can
+be copied and the full conversation can be exported as a JSON file from the
+header.
