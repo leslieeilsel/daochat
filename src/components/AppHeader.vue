@@ -2,14 +2,15 @@
   <header class="header">
     <h1>DaoChat</h1>
     <div class="actions">
-      <button @click="exportChat">Export</button>
+      <Button @click="exportChat" size="sm">Export</Button>
       <RouterLink to="/settings">Settings</RouterLink>
     </div>
-  </header>
+</header>
 </template>
 
 <script setup>
 import { RouterLink } from "vue-router";
+import { Button } from "shadcn-vue";
 import { useChatStore } from "../stores/chat";
 
 const chat = useChatStore();

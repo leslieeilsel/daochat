@@ -1,8 +1,8 @@
 <script setup>
-import ChatSidebar from '../components/ChatSidebar.vue'
 import ChatMessageList from '../components/ChatMessageList.vue'
 import ChatInput from '../components/ChatInput.vue'
 import AppHeader from '../components/AppHeader.vue'
+import { Card } from 'shadcn-vue'
 import { useChatStore } from '../stores/chat'
 
 const chat = useChatStore()
@@ -11,13 +11,10 @@ const chat = useChatStore()
 <template>
   <div class="page">
     <AppHeader />
-    <div class="body">
-      <ChatSidebar />
-      <div class="main">
-        <ChatMessageList :messages="chat.messages" />
-        <ChatInput :loading="chat.loading" @send="chat.sendMessage" />
-      </div>
-    </div>
+    <Card class="chat-body">
+      <ChatMessageList :messages="chat.messages" />
+      <ChatInput :loading="chat.loading" @send="chat.sendMessage" />
+    </Card>
   </div>
 </template>
 
@@ -25,15 +22,14 @@ const chat = useChatStore()
 .page {
   display: flex;
   flex-direction: column;
+  flex: 1;
   height: 100vh;
 }
-.body {
-  display: flex;
-  flex: 1;
-}
-.main {
+.chat-body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin: 1rem;
+  padding: 1rem;
 }
 </style>

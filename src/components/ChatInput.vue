@@ -1,16 +1,18 @@
 <template>
   <form class="input" @submit.prevent="submit">
-    <input
+    <Input
       v-model="text"
       placeholder="Send a message"
       @keydown.enter.exact.prevent="submit"
+      class="flex-1"
     />
-    <button :disabled="loading">Send</button>
+    <Button :disabled="loading" type="submit" class="ml-2">Send</Button>
   </form>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { Button, Input } from 'shadcn-vue'
 const props = defineProps({
   loading: Boolean,
 })
@@ -29,8 +31,7 @@ function submit() {
   padding: 0.5rem;
   border-top: 1px solid #ccc;
 }
-.input input {
+.input :deep(.input-element) {
   flex: 1;
-  padding: 0.5rem;
 }
 </style>

@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { Button, Card, Input } from 'shadcn-vue'
+import AppHeader from '../components/AppHeader.vue'
 import { useConfigStore } from '../stores/config'
 
 const config = useConfigStore()
@@ -14,17 +16,29 @@ async function save() {
 
 <template>
   <div class="settings">
-    <h1>Settings</h1>
-    <form @submit.prevent="save">
-      <input v-model="passInput" placeholder="Passphrase" type="password" />
-      <input v-model="keyInput" placeholder="API Key" />
-      <button>Save</button>
-    </form>
+    <AppHeader />
+    <Card class="settings-card">
+      <form @submit.prevent="save" class="form">
+        <Input v-model="passInput" placeholder="Passphrase" type="password" />
+        <Input v-model="keyInput" placeholder="API Key" />
+        <Button type="submit" class="mt-2">Save</Button>
+      </form>
+    </Card>
   </div>
 </template>
 
 <style scoped>
 .settings {
   padding: 1rem;
+}
+.settings-card {
+  padding: 1rem;
+  margin-top: 1rem;
+  max-width: 400px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 </style>
